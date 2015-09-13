@@ -27,7 +27,7 @@
         maxZoom: 20,
         attributionControl: true,
     }).setView([52.5113, 13.4078], 15);
-	L.control.locate().addTo(map);
+	
     map.attributionControl.setPrefix('');   
     L.tileLayer('https://api.tiles.mapbox.com/v3/jstratman.ne7aak6k/{z}/{x}/{y}.png', {
         minZoom: 1,
@@ -35,7 +35,7 @@
         zIndex: 1,
         attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a>"
     }).addTo(map);
-
+L.control.locate().addTo(map);
 </script>
  
  
