@@ -7,11 +7,17 @@
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>
 <link href='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />
+<link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
      
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; background: black; }
+		            .pill { display: table; margin: 10px auto; }
+            .pill .button { font-size: 11px; padding: 0.5em; height: 32px;}
     </style>
+	
+	        
+
 </head>
 <body>
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
@@ -22,11 +28,20 @@
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
  
 <div id='map'></div>
+
+        <div id="airbnb-locations" class='pill' style="right:auto"><!--
+            --><a data-position='52.5113, 13.4078' data-zoom='13' href='#' class='button loud'>Berlin</a><!--
+            --><a data-position='42.3596,-71.0951' data-zoom='15' href='#' class='button'>Boston</a><!--
+            --><a data-position='40.7674,-73.9773' data-zoom='14' href='#' class='button'>New York</a>
+        </div>
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
 <script>
     var map = L.map('map', {
         maxZoom: 20,
         attributionControl: true,
-    }).setView([52.5113, 13.4078], 15);
+    }).setView([52.5113, 13.4078], 13);
 	
     map.attributionControl.setPrefix('');   
     L.tileLayer('https://api.tiles.mapbox.com/v3/jstratman.ne7aak6k/{z}/{x}/{y}.png', {
@@ -36,6 +51,25 @@
         attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a>"
     }).addTo(map);
 L.control.locate().addTo(map);
+
+
+$('.button').on('click',function(e){
+    $('.loud').removeClass('loud');
+    $(this).addClass('loud');
+    var pos = e.target.getAttribute('data-position');
+    var zoom = e.target.getAttribute('data-zoom');
+    if (pos) {
+            var loc = pos.split(',');
+            map.setView(loc, zoom);
+            return false;
+        }
+        
+});
+
+
+
+
+
 </script>
  
  
