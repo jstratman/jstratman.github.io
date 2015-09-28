@@ -1,77 +1,33 @@
+ Mapbox GL JS
+OverviewAPIStyle ReferenceExamples
+A simple map
+Initializing a Map in an HTML element.
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset=utf-8 />
-    <title>Europe Trip</title>
-     
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />
-<link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
-     
+    <meta charset='utf-8' />
+    <title>SF Parks</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; background: black; }
-		            .pill { display: table; margin: 10px auto; }
-            .pill .button { font-size: 11px; padding: 0.5em; height: 32px;}
+        #map { position:absolute; top:0; bottom:0; width:100%; }
     </style>
-	
-	        
-
 </head>
 <body>
-<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
-<!--[if lt IE 9]>
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
-<![endif]-->
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
- 
+
 <div id='map'></div>
-
-        <div id="airbnb-locations" class='pill' style="right:auto"><!--
-            --><a data-position='52.5113, 13.4078' data-zoom='13' href='#' class='button loud'>Berlin</a><!--
-            --><a data-position='48.6906, 9.2087' data-zoom='14' href='#' class='button'>Stuttgart</a><!--
-            --><a data-position='50.1122, 8.6745' data-zoom='14' href='#' class='button'>Frankfurt</a>
-        </div>
-		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-
 <script>
-    var map = L.map('map', {
-        maxZoom: 20,
-        attributionControl: true,
-    }).setView([52.5113, 13.4078], 13);
-	
-    map.attributionControl.setPrefix('');   
-    L.tileLayer('https://api.tiles.mapbox.com/v3/jstratman.ne7aak6k/{z}/{x}/{y}.png', {
-        minZoom: 1,
-        maxZoom: 20,
-        zIndex: 1,
-        attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a>"
-    }).addTo(map);
-L.control.locate().addTo(map);
-
-
-$('.button').on('click',function(e){
-    $('.loud').removeClass('loud');
-    $(this).addClass('loud');
-    var pos = e.target.getAttribute('data-position');
-    var zoom = e.target.getAttribute('data-zoom');
-    if (pos) {
-            var loc = pos.split(',');
-            map.setView(loc, zoom);
-            return false;
-        }
-        
+mapboxgl.accessToken = 'pk.eyJ1IjoianN0cmF0bWFuIiwiYSI6IlpVUTZSXzgifQ.hxmNOg44oouXakZyJQZX7Q';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/jstratman/cienatk1p08cfsmkmkgtsjhln', //stylesheet location
+    center: [-74.50, 40], // starting position
+    zoom: 9 // starting zoom
 });
-
-
-
-
-
 </script>
- 
- 
+
 </body>
 </html>
