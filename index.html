@@ -47,8 +47,9 @@ function fit() {
     map.fitBounds(countryBounds);
 }
 function fit2() {
-    var countryBounds = walesBounds;
+    var countryBounds = bounds2;
     map.fitBounds(countryBounds);
+    console.log(map.getBounds());
 }
 
 var kenyaBounds = [[
@@ -60,18 +61,17 @@ var kenyaBounds = [[
     ]];
 
 var walesBounds = [[
-        -5.2623046875,
-        51.3904296875
+        12.20,
+        -13.45
     ], [
-        -2.6623046875,
-        53.4192871094
+        31.306351,
+        5.386
     ]];
 
+var bounds2 = [[112.92,-54.75],[159.11,-9.24]];
 
 
-
-
-//20  -28.517 29.35   24.583
+//65    29.38   74.88   38.48
 </script>
 
 </body>
