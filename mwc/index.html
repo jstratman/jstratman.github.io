@@ -18,9 +18,43 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoianN0cmF0bWFuIiwiYSI6IlpVUTZSXzgifQ.hxmNOg44oouXakZyJQZX7Q';
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v8',
-    center: [-74.50, 40], // starting position
-    zoom: 9 // starting zoom
+    style: 'mapbox://styles/jstratman/cik7qa06j00i296kpk28omvbs',
+    center: [2.1785367, 41.3827575], // starting position
+    zoom: 16 // starting zoom
+});
+
+//Add bar
+map.on('style.load', function () {
+    map.addSource("markers", {
+        "type": "geojson",
+        "data": {
+               "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "properties": {
+            "marker-symbol": "bar"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [2.1785367, 41.3827575]
+        }
+    }]
+        }
+    });
+
+
+    map.addLayer({
+        "id": "markers",
+        "type": "symbol",
+        "source": "markers",
+        "layout": {
+            "icon-image": "{marker-symbol}-15",
+  
+        },
+        "paint": {
+            "icon-color" : "#ff0000"
+        }
+    });
 });
 
 // Add zoom and rotation controls to the map.
