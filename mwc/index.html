@@ -20,46 +20,61 @@ var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/jstratman/cik7qa06j00i296kpk28omvbs',
     center: [2.1785367, 41.3827575], // starting position
-    zoom: 16 // starting zoom
+    zoom: 16, // starting zoom
+    
 });
+
+
 
 //Add bar
-map.on('style.load', function () {
-    map.addSource("markers", {
-        "type": "geojson",
-        "data": {
-               "type": "FeatureCollection",
-    "features": [{
-        "type": "Feature",
-        "properties": {
-            "marker-symbol": "bar"
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [2.1785367, 41.3827575]
-        }
-    }]
-        }
-    });
 
-
-    map.addLayer({
-        "id": "markers",
-        "type": "symbol",
-        "source": "markers",
-        "layout": {
-            "icon-image": "{marker-symbol}-15",
-  
-        },
-        "paint": {
-            "icon-color" : "#ff0000"
-        }
-    });
-});
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.Navigation());
 map.scrollZoom.disable()
+
+    var popup = new mapboxgl.Popup({
+     closeButton: false,
+     closeOnClick: false
+ });
+
+map.on('click', function (e) {
+    map.featuresAt(e.point, {layer: 'markers', radius: 10, includeGeometry: true}, function (err, features) {
+        if (err) throw err;
+	 feature = features[0];
+	 if (feature) {
+	
+	};
+         // Initialize a popup and set its coordinates
+         // based on the feature found.
+	 var tooltip = new mapboxgl.Popup();
+         tooltip.setLngLat(feature.geometry.coordinates)
+             .setHTML("<b>"+feature.properties.name + "</b>")
+             .addTo(map);    
+    });
+});
+
+    map.on('mousemove', function (e) {
+            map.featuresAt(e.point, {layer: 'markers', radius: 10, includeGeometry: true}, function (err, features) {
+        if (err) throw err;
+        map.getCanvas().style.cursor = features.length ? 'pointer' : '';
+        if (err || !features.length) {
+             popup.remove();
+             return;
+         }
+	 var feature = features[0];
+
+         // Initialize a popup and set its coordinates
+         // based on the feature found.
+	
+         popup.setLngLat(feature.geometry.coordinates)
+             .setHTML("<b>"+feature.properties.name + "</b>")
+             .addTo(map);
+	     
+	 
+	 
+    });
+    });
 </script>
 
 </body>
