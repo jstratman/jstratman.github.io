@@ -1,3 +1,5 @@
+
+var firstStep = function() {
 var exec = require('child_process').exec,
     child, child2;
      var turf = require('./libs/turf.js');
@@ -25,10 +27,10 @@ var fs = require('fs');
      }
  });
  
- 
- 
+ };
+ // Still need to time the writing of the geojson to the execution of the parsing!
 
-function secondStep(){
+var secondStep = function(){
 var centers = JSON.parse(fs.readFileSync('test.geojson', 'utf8'));
 var polys = JSON.parse(fs.readFileSync('./geojson/poly_test.geojson', 'utf8'));
 
@@ -102,3 +104,5 @@ playground_final.features[i].properties.wheelchair = playground.features[i].prop
 };
 //fs.writeFile('./'+'finalplaygrounds'+'.geojson', JSON.stringify(playground_final) , 'utf-8');
 };
+
+firstStep(secondStep); //callback test
