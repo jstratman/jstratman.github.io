@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.13.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.13.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoianN0cmF0bWFuIiwiYSI6IlpVUTZSXzgifQ.hxmNOg44oouXakZyJQZX7Q';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/jstratman/cikpuodqz00li9vm0l4t56jdb',
+    center: [-97.73, 30.26], // starting position
+    zoom: 14.8, // starting zoom
+    
+});
+
+
+
+//Add bar
+
+
+// Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.Navigation());
+map.scrollZoom.disable()
+
+    var popup = new mapboxgl.Popup({
+     closeButton: false,
+     closeOnClick: false
+ });
+
+map.on('click', function (e) {
+    map.featuresAt(e.point, {layer: 'markers', radius: 10, includeGeometry: true}, function (err, features) {
+        if (err) throw err;
+	 feature = features[0];
+	 if (feature) {
+	
+	};
+         // Initialize a popup and set its coordinates
+         // based on the feature found.
+	 var tooltip = new mapboxgl.Popup();
+         tooltip.setLngLat(feature.geometry.coordinates)
+             .setHTML("<b>"+feature.properties.name + "</b>")
+             .addTo(map);    
+    });
+});
+
+    map.on('mousemove', function (e) {
+            map.featuresAt(e.point, {layer: 'markers', radius: 10, includeGeometry: true}, function (err, features) {
+        if (err) throw err;
+        map.getCanvas().style.cursor = features.length ? 'pointer' : '';
+        if (err || !features.length) {
+             popup.remove();
+             return;
+         }
+	 var feature = features[0];
+
+         // Initialize a popup and set its coordinates
+         // based on the feature found.
+	
+         popup.setLngLat(feature.geometry.coordinates)
+             .setHTML("<b>"+feature.properties.name + "</b>")
+             .addTo(map);
+	     
+	 
+	 
+    });
+    });
+</script>
+
+</body>
+</html>
+
+
+
