@@ -49,7 +49,8 @@ map.on('click', function (e) {
          // based on the feature found.
 	 var tooltip = new mapboxgl.Popup();
          tooltip.setLngLat(feature.geometry.coordinates)
-             .setHTML("<b>"+feature.properties.name + "</b>")
+             .setHTML("<b><a href='http://ginger.cat/GINGER_BARCELONA/welcome_to_Ginger_Barcelona.html' target='blank'>" +feature.properties.name + "</a></b><br>" + "1 Carrer de la Palma de Sant Just" + "<br>" + "08002 Barcelona, Spain")
+
              .addTo(map);    
     });
 });
