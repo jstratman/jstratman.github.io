@@ -49,7 +49,7 @@ map.on('click', function (e) {
          // based on the feature found.
 	 var tooltip = new mapboxgl.Popup();
          tooltip.setLngLat(feature.geometry.coordinates)
-             .setHTML("<b>"+feature.properties.name + "</b>")
+             .setHTML("<p style='text-align: center;'><b><a href='http://www.cenoteaustin.com/home/' target='blank'>" +feature.properties.name + "</a></b><br>" + "1010 East Cesar Chavez" + "<br>" + "Austin, TX 78702</p>")
              .addTo(map);    
     });
 });
@@ -68,7 +68,7 @@ map.on('click', function (e) {
          // based on the feature found.
 	
          popup.setLngLat(feature.geometry.coordinates)
-             .setHTML("<b>"+feature.properties.name + "</b>")
+             .setHTML("<p style='text-align: center;'><b><a href='http://www.cenoteaustin.com/home/' target='blank'>" +feature.properties.name + "</a></b><br>" + "1010 East Cesar Chavez" + "<br>" + "Austin, TX 78702</p>")
              .addTo(map);
 	     
 	 
