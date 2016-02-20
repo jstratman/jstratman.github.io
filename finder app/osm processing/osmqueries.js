@@ -5,10 +5,52 @@ var fs = require('fs');
 var playgroundIn;  
 
 var firstStep = function() {
+var q = new Array();
+q[0] = 'query-overpass queries/playground_center.ql >geojson/playground_center.geojson';
+q[1] = 'query-overpass queries/playground_poly.ql >geojson/playground_poly.geojson';
 
- 
+/* original method
+for (var i = 0; i < q.length; i++) {
 
- child = exec('query-overpass queries/playground_center.ql >geojson/playground_center.geojson', {maxBuffer: 1024 * 2500},
+
+};
+*/
+
+function hello() {
+    var index = 0;
+	var counter = 1;
+
+    function loadQ() {
+        if (index < q.length) {
+            
+              child = exec(q[index], {maxBuffer: 1024 * 2500},
+   function (error, stdout, stderr) {
+	    
+       if (error !== null) {
+            console.log('exec error: ' + error);
+       }
+	   console.log(counter+" query complete");
+	   if (counter < q.length) {
+	     console.log(counter);
+	     ++counter;
+	   } else if (counter = q.length) {
+	     console.log('the end' + counter);
+	   }
+	   
+ });
+			index = index + 1;
+			loadQ();
+        }
+		
+    }
+    loadQ();
+	
+};
+hello();
+
+
+/*
+ child = exec(q[0], {maxBuffer: 1024 * 2500},
  function (error, stdout, stderr) {
  playgroundIn = stdout;
     // console.log(playgroundIn);
@@ -20,13 +62,14 @@ var firstStep = function() {
 	 secondStep();
  });
 
-child = exec('query-overpass queries/playground_poly.ql >geojson/playground_poly.geojson', {maxBuffer: 1024 * 2500},
+child = exec(q[1], {maxBuffer: 1024 * 2500},
  function (error, stdout, stderr) {
 	 console.log('playground_poly complete');
      if (error !== null) {
           console.log('exec error: ' + error);
      }
  });
+ */
  
  };
  // Still need to time the writing of the geojson to the execution of the parsing!
@@ -77,7 +120,7 @@ function exactValue(input, output){
 
 //process final playgrounds
 for(var i = 0; i < playground.features.length; i++) {
-console.log("u");
+//console.log("u");
 //create new geojson without properties
 playground_final.features.push(turf.center(playground.features[i]));
 /*
