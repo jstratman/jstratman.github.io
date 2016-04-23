@@ -1,4 +1,4 @@
-X,Y,ID,prec,url,width,height,tags
+Longitude,Latitude,ID,prec,url,width,height,tags
 34.34726179,63.38980171,0,1,www.yahoo.com/stuff,4.33,22.2,"mountain,state,something,something,something,something,something,something,something"
 -81.96341772,48.83741117,1,1,www.yahoo.com/stuff,4.33,22.2,"mountain,state,something,something,something,something,something,something,something"
 48.67404837,53.56835399,2,1,www.yahoo.com/stuff,4.33,22.2,"mountain,state,something,something,something,something,something,something,something"
