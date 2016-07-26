@@ -4,8 +4,8 @@
     <meta charset='utf-8' />
     <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.21.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.21.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -13,97 +13,90 @@
 </head>
 <body>
 
+<style>
+.marker {
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+</style>
+
 <div id='map'></div>
+
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoianN0cmF0bWFuIiwiYSI6IlpVUTZSXzgifQ.hxmNOg44oouXakZyJQZX7Q';
+var geojson = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "message": "Foo",
+                "iconSize": [60, 60]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -66.324462890625,
+                    -16.024695711685304
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "message": "Bar",
+                "iconSize": [50, 50]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -61.2158203125,
+                    -15.97189158092897
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "message": "Baz",
+                "iconSize": [40, 40]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -63.29223632812499,
+                    -18.28151823530889
+                ]
+            }
+        }
+    ]
+};
+
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v8',
-    center: [-90.96, -0.47],
-    zoom: 8
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [-65.017, -16.457],
+    zoom: 5
 });
 
-map.on('style.load', function () {
+// add markers to map
+geojson.features.forEach(function(marker) {
+    // create an img element for the marker
+    var el = document.createElement('button');
+    el.className = 'marker';
+    el.style.backgroundImage = 'url(https://placekitten.com/g/' + marker.properties.iconSize.join('/') + '/)';
+    el.style.width = marker.properties.iconSize[0];
+    el.style.height = marker.properties.iconSize[1];
 
-    // add geojson data as a new source
-    map.addSource("symbols", {
-        "type": "geojson",
-        "data": {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -91.395263671875,
-                            -0.9145729757782163
-
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -90.32958984375,
-                            -0.6344474832838974
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -91.34033203125,
-                            0.01647949196029245
-                        ]
-                    }
-                }
-            ]
-        }
+    el.addEventListener('click', function() {
+        window.alert(marker.properties.message);
     });
 
-    // add source as a layer and apply some styles
-    map.addLayer({
-        "id": "symbols",
-        "interactive": true,
-        "type": "symbol",
-        "source": "symbols",
-        "layout": {
-            "icon-image": "marker-15"
-        },
-        "paint": {}
-    });
-});
-
-map.on('click', function (e) {
-    // Use featresAt to get features within a given radius of the click event
-    // Use layer option to avoid getting results from other layers
-    map.featuresAt(e.point, {layer: 'symbols', radius: 10, includeGeometry: true}, function (err, features) {
-        if (err) throw err;
-        // if there are features within the given radius of the click event,
-        // fly to the location of the click event
-        if (features.length) {
-            // Get coordinates from the symbol and center the map on those coordinates
-            map.flyTo({center: features[0].geometry.coordinates});
-        }
-    });
-});
-
-
-// Use the same approach as above to indicate that the symbols are clickable
-// by changing the cursor style to 'pointer'.
-map.on('mousemove', function (e) {
-    map.featuresAt(e.point, {layer: 'symbols', radius: 10}, function (err, features) {
-        if (err) throw err;
-        map.getCanvas().style.cursor = features.length ? "pointer" : "";
-    });
+    // add marker to map
+    new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
 });
 </script>
 
