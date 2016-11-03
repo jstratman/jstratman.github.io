@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Full Slider - Start Bootstrap Template</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Custom CSS
+    <link href="css/full-slider.css" rel="stylesheet"> -->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.26.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.26.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+#map{ width: 20%; 
+    height: 20%; 
+    bottom:0; 
+    left:0; 
+    position: absolute; 
+    background:black;
+    z-index: 9999;
+    border-radius: 0 25px 0 0; }
+
+    html,body{
+   height:100%;
+}
+.carousel img {
+    min-height: 100%;
+    object-fit: cover;
+}
+.cn {
+   position: absolute; 
+    width: 30%;
+    height: 20%;
+    background-color:rgba(255, 255, 255, 0.7);
+    top:40%;
+    left:35%;
+    z-index: 9999;
+    border-radius: 25px;
+}
+#details{
+    bottom:0;
+    right:0;
+    position: absolute;
+    z-index: 9999;
+    background-color:rgba(255, 255, 255, 0.7);
+    color:black;
+    border-radius: 5px 0 0 0;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    padding-right: 7px;
+    padding-left: 7px;
+}
+#details a{
+    color:black;
+}
+
+</style>
+</head>
+
+<body>
+
+   
+
+    <!-- Full Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+    
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+        <!--
+            <div class="item active">
+             
+                <div class="fill" style="background-image:url('https://s3-us-west-2.amazonaws.com/photo-original/xl/qPCLrsJ-xl.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 1</h2>
+                </div>
+            </div>
+            <div class="item">
+               
+                <div class="fill" style="background-image:url('https://s3-us-west-2.amazonaws.com/photo-original/xl/SstQQt3-xl.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 2</h2>
+                </div>
+            </div>
+            <div class="item">
+                
+                <div class="fill" style="background-image:url('https://s3-us-west-2.amazonaws.com/photo-original/xl/gEwnzZV-xl.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 3</h2>
+                </div>
+            </div>
+            -->
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+
+ <div id="map"></div>
+
+        <div class="cn">
+            fsfsdf
+        </div>
+
+                    <div id="details">
+               
+                    
+              
+                        <h4 id="photo_sources"></h4>
+                        
+                       
+                  
+               
+            </div>
+
+
+   
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+
+
+    $(document).ready(function(){ 
+
+
+var features = ﻿﻿{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "p": "tm29R0t",
+        "s": "https://unsplash.com/photos/xP7fYv7KszU\t",
+        "n": "https://unsplash.com/@showkin9"
+      },
+      "geometry": {
+        "coordinates": [
+          14.484981,
+          40.628052
+        ],
+        "type": "Point"
+      },
+      "id": "13ba298b5c337a52910230278dc2e44f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "p": "WaaqGwf",
+        "s": "https://pixabay.com/en/sleeping-city-sleep-night-evening-89197/",
+        "n": "https://pixabay.com/en/users/PublicDomainPictures-14/"
+      },
+      "geometry": {
+        "coordinates": [
+          -1.546676,
+          53.993817
+        ],
+        "type": "Point"
+      },
+      "id": "334cbbd548c65b6b3fc59730e161c283"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "s": "https://pixabay.com/en/fog-bohemian-fog-sunrise-1455282/",
+        "n": "https://pixabay.com/en/users/Oimheidi-1660138/",
+        "p": "AKSCa2U"
+      },
+      "geometry": {
+        "coordinates": [
+          12.952797,
+          50.428566
+        ],
+        "type": "Point"
+      },
+      "id": "3aec88f27de62e46a0878cadb832565e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "p": "5m9t6Mp",
+        "s": "https://pixabay.com/en/etretat-normandy-beach-cliff-1292799/",
+        "n": "https://pixabay.com/en/users/Designatic-453169/"
+      },
+      "geometry": {
+        "coordinates": [
+          0.19183,
+          49.70496
+        ],
+        "type": "Point"
+      },
+      "id": "46220d87b77de9e48caaf2b25477d7f2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "p": "jKiOZxi",
+        "s": "https://pixabay.com/en/eilean-donan-castle-castle-650681/",
+        "n": "https://pixabay.com/en/users/Barni1-773830/"
+      },
+      "geometry": {
+        "coordinates": [
+          -5.515705,
+          57.273098
+        ],
+        "type": "Point"
+      },
+      "id": "6f2eec908c5ad137c49f0c62bd7c526b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "p": "9MjhDTh",
+        "s": "https://unsplash.com/photos/YbgPWfWlvkE",
+        "n": "https://unsplash.com/@elizabethlies"
+      },
+      "geometry": {
+        "coordinates": [
+          -5.785558,
+          41.40985
+        ],
+        "type": "Point"
+      },
+      "id": "81d5d804c323265f2e4d13744dd3ada2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "p": "FduRNvZ",
+        "s": "https://unsplash.com/photos/ygn9SCQRATg\t",
+        "n": "https://unsplash.com/@aleskrivec"
+      },
+      "geometry": {
+        "coordinates": [
+          12.084368,
+          46.696743
+        ],
+        "type": "Point"
+      },
+      "id": "9cf381a856d255d324b6cce7d53b2ab6"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "n": "https://pixabay.com/en/users/Skitterphoto-324082/",
+        "p": "Vk4DRDV",
+        "s": "https://pixabay.com/en/binnenhof-the-hague-politics-1453078/"
+      },
+      "geometry": {
+        "coordinates": [
+          4.310735,
+          52.080092
+        ],
+        "type": "Point"
+      },
+      "id": "a22795e5fb253b2176ca2e2f92aad32a"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "p": "1fHYSlr",
+        "s": "https://pixabay.com/en/lake-paradise-croatia-plitvice-1272662/\t",
+        "n": "https://pixabay.com/en/users/Waldo93-2212041/"
+      },
+      "geometry": {
+        "coordinates": [
+          15.60891,
+          44.87608
+        ],
+        "type": "Point"
+      },
+      "id": "a6948699d38dbbd6f3abe7e89f4a1589"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "p": "Efpkgh2",
+        "s": "https://unsplash.com/photos/6cY-FvMlmkQ",
+        "n": "https://unsplash.com/@lukasbudimaier"
+      },
+      "geometry": {
+        "coordinates": [
+          12.13601,
+          47.22496
+        ],
+        "type": "Point"
+      },
+      "id": "be2cd42f2c07d0e1e66cae6e801bdbb2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "p": "ObYsnVf",
+        "s": "https://pixabay.com/en/three-peaks-of-lavaredo-hut-dolomites-1650161/",
+        "n": "https://pixabay.com/en/users/hschmider-3108740/"
+      },
+      "geometry": {
+        "coordinates": [
+          12.310599,
+          46.63693
+        ],
+        "type": "Point"
+      },
+      "id": "d22fefef97176e38cfda915b26c2408b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "p": "Pb28ovL",
+        "s": "https://pixabay.com/en/tatry-lake-mountains-landscape-1321838/",
+        "n": "https://pixabay.com/en/users/manufaktura82-2200751/"
+      },
+      "geometry": {
+        "coordinates": [
+          20.0807,
+          49.18616
+        ],
+        "type": "Point"
+      },
+      "id": "e52b26f83979ad2f17727ebe32326158"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "p": "EGE17a6",
+        "s": "https://pixabay.com/en/dubrovnik-croatia-kings-landing-512798/\t",
+        "n": "https://pixabay.com/en/users/fjaka-551782/"
+      },
+      "geometry": {
+        "coordinates": [
+          18.11191,
+          42.64071
+        ],
+        "type": "Point"
+      },
+      "id": "f19174e83673131e20816a946c0a185d"
+    }
+  ],
+  "type": "FeatureCollection"
+};
+
+setSource(0);
+  for(var i=0 ; i< features.features.length  ; i++) {
+    console.log(features.features[i].properties.p);
+    $('<div class="item"><img src="https://s3-us-west-2.amazonaws.com/photo-original/o/'+features.features[i].properties.p+'.jpg"><div class="carousel-caption"></div>   </div>').appendTo('.carousel-inner');
+    $('<li data-target="#carousel-example-generic" data-slide-to="'+i+'"></li>').appendTo('.carousel-indicators')
+
+  }
+  $('.item').first().addClass('active');
+  $('.carousel-indicators > li').first().addClass('active');
+  $('#carousel-example-generic').carousel();
+
+
+
+mapboxgl.accessToken = 'pk.eyJ1IjoianN0cmF0bWFuIiwiYSI6IlpVUTZSXzgifQ.hxmNOg44oouXakZyJQZX7Q';
+var map = new mapboxgl.Map({
+   container: 'map',
+   style: 'mapbox://styles/jstratman/civ1z1xvp000d2ipczjrl7z90',
+   center: features.features[0].geometry.coordinates,
+   zoom: 12,
+   interactive:false
+});
+
+
+    $('.carousel').carousel({
+        interval: 6400 //changes the speed
+    })
+
+     $("#myCarousel").on('slide.bs.carousel', function (e) {
+            var slideFrom = $(this).find('.active').index();
+    var slideTo = $(e.relatedTarget).index();
+    console.log(slideFrom+' => '+slideTo);
+             
+
+    console.log(features.features[0].properties.p);
+    mapFly(features.features[slideTo].geometry.coordinates);
+
+setSource(slideTo);
+
+function mapFly(coords){
+        map.flyTo({
+       center: coords,
+           speed: 2,
+           zoom: 13,
+           curve: 3
+   });
+}
+
+   
+    });
+
+     function setSource(index){
+        history.pushState("", document.title, window.location.pathname + window.location.search);
+        var source;
+        if (features.features[index].properties.s.indexOf("pixabay") >= 0){
+            source = "Pixabay";
+
+        } else {
+            source="Unsplash"
+        }
+
+        document.getElementById("photo_sources").innerHTML = '<a href="'+features.features[index].properties.s+'" target="blank">Full image at '+source+'</a>  |  <a href="'+features.features[index].properties.n+'" target="blank">More by this photographer</a>  |  <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="blank">License: CC0 Public Domain</a>';
+     };
+
+});
+    </script>
+
+</body>
+
+</html>
