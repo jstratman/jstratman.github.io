@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<style>
+.coordinates {
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right:0;
+    text-align: center;
+    padding:5px 10px;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 3px;
+    display: none;
+    width: 50%;
+    left:25%;
+}
+</style>
+
+<div id='map'></div>
+<div id='coordinates' class='coordinates'></div>
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoianN0cmF0bWFuIiwiYSI6IlpVUTZSXzgifQ.hxmNOg44oouXakZyJQZX7Q';
+// Holds mousedown state for events. if this
+// flag is active, we move the point on `mousemove`.
+var isDragging;
+
+// Is the cursor over a point? if this
+// flag is active, we listen for a mousedown event.
+var isCursorOverPoint;
+
+var coordinates = document.getElementById('coordinates');
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/jstratman/cj1fizpzc00032rqu9jln8dov',
+    center: [-79.124,40.712],
+    zoom: 7.1
+});
+
+var canvas = map.getCanvasContainer();
+
+var geojson = {
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-79.124,40.712]
+        }
+    }]
+};
+
+function mouseDown() {
+    if (!isCursorOverPoint) return;
+
+    isDragging = true;
+
+    // Set a cursor indicator
+    canvas.style.cursor = 'grab';
+
+    // Mouse events
+    map.on('mousemove', onMove);
+    map.once('mouseup', onUp);
+}
+
+function onMove(e) {
+    if (!isDragging) return;
+    var coords = e.lngLat;
+
+    // Set a UI indicator for dragging.
+    canvas.style.cursor = 'grabbing';
+
+    // Update the Point feature in `geojson` coordinates
+    // and call setData to the source layer `point` on it.
+    geojson.features[0].geometry.coordinates = [coords.lng, coords.lat];
+    map.getSource('point').setData(geojson);
+}
+
+function onUp(e) {
+    if (!isDragging) return;
+    var coords = e.lngLat;
+
+    // Print the coordinates of where the point had
+    // finished being dragged to on the map.
+    coordinates.style.display = 'block';
+    
+    canvas.style.cursor = '';
+    isDragging = false;
+    console.log('done');
+ 
+    var xhr = new XMLHttpRequest();
+       
+    var query = coords.lng + "," + coords.lat;
+xhr.open("GET", "https://api.mapbox.com/v4/jstratman.cj1fis6d900sa32jusom1sbkj-0dyye/tilequery/" + query + ".json?radius=0&access_token=pk.eyJ1IjoianN0cmF0bWFuIiwiYSI6IlpVUTZSXzgifQ.hxmNOg44oouXakZyJQZX7Q  ", false);
+var now = (new Date()).getTime();
+xhr.send();
+var duration = (new Date()).getTime() - now; //ms
+console.log(duration);
+var response = JSON.parse(xhr.response);
+var zones = [];
+var features = [];
+//console.log(response.features[0].properties.type);
+for (i = 0; i < response.features.length; i++) { 
+    console.log(response.features[i].properties.ZCTA5CE10)
+    zones.push(response.features[i].properties.ZCTA5CE10);
+    features.push(response.features[i]);
+}
+if (zones.length >0) {
+coordinates.innerHTML = "<h2>"+zones+"</h2><br><br>"+ JSON.stringify(features);
+} else{
+    coordinates.innerHTML = '<i>outside geofence</i>';
+}
+    // Unbind mouse events
+    map.off('mousemove', onMove);
+}
+
+map.on('load', function() {
+
+    // Add a single point to the map
+    map.addSource('point', {
+        "type": "geojson",
+        "data": geojson
+    });
+
+    map.addLayer({
+        "id": "point",
+        "type": "circle",
+        "source": "point",
+        "paint": {
+            "circle-radius": 10,
+            "circle-color": "#3887be"
+        }
+    });
+
+    // When the cursor enters a feature in the point layer, prepare for dragging.
+    map.on('mouseenter', 'point', function() {
+        map.setPaintProperty('point', 'circle-color', '#3bb2d0');
+        canvas.style.cursor = 'move';
+        isCursorOverPoint = true;
+        map.dragPan.disable();
+    });
+
+    map.on('mouseleave', 'point', function() {
+        map.setPaintProperty('point', 'circle-color', '#3887be');
+        canvas.style.cursor = '';
+        isCursorOverPoint = false;
+        map.dragPan.enable();
+    });
+
+    map.on('mousedown', mouseDown);
+});
+</script>
+
+</body>
+</html>
