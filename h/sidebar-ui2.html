@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.9/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.9/semantic.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js"></script>
+
+
+
+    <style>
+        body { margin:0; padding:0;  }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+        #logo-container{
+          
+    left: 5px;
+    height:55px;
+    width:25%;
+        }
+  
+        .pusher{
+            height:100%;
+           
+        }
+        #sidebar {
+            
+            top:65px;
+            left:5px;
+      /* height:calc(90vh-650px) !important; */
+      bottom: 500px;
+    height: calc(100% - 70px) !important;
+            width: 25%;
+            opacity: 0.75;
+
+        }
+
+
+#left{
+    
+    background-color: black;
+   
+
+}
+#right{
+    background-color: green;
+   
+}
+.ui.grid {
+    min-height: 100%;
+}
+.bottom-bar{
+    width:100% !important;
+    height:20% !important;
+    z-index: 9999 !important;
+    text-align: center;
+    background-color: rgba(255,255,255,0.3);
+   
+   
+}
+.ui.bottom.sidebar{
+height:20% !important;
+}
+.right-bar{
+    width:20% !important;
+    height:100% !important;
+    z-index: 9999 !important;
+    text-align: center;
+    background-color: rgba(255,0,255,0.3);
+    margin:auto !important;
+    min-width: 175px;
+    max-width: 400px;
+
+    
+}
+.fasttrans{
+    transition-duration: 0.05s, 0.05s !important;
+}
+.slowtrans{
+    transition-duration: 0.4s, 0.4s !important;
+ 
+}
+
+      .pswp{
+       
+      } 
+      .pswp__bg{
+        background: #1B1C1D !important;
+      }
+      .pswp__img{
+        border-radius: 5px;
+      }
+      .pswp__top-bar{
+        background-color: rgb(27,28,29,1) !important;
+      }
+
+
+      #mask{
+         position:absolute; top:0; bottom:0; width:100%;
+         z-index: 5;background: #1B1C1D !important; visibility: hidden;
+      } 
+      .pswp-vertical-opened{
+        height:100%;
+        width:80%;
+      }
+            .pswp-horizontal-opened{
+        height:80%;
+        width:100%;
+      }
+      .pswp-closed{
+        height: 100%;
+        width: 100%;
+      }
+      .bottom1{
+        width:100% !important;
+      }
+      .bottom2{
+        width: 50% !important;
+      }
+      .right1{
+        height: 100% !important;
+        padding: 4px !important;
+        padding-top: 50% !important;
+    
+      }
+      .right2{
+        height: 50% !important;
+      }
+      .innermap{
+        height:20%;
+      }
+      .bottomcard{
+        
+      }
+    </style>
+</head>
+<body>
+<div class="pusher">
+
+<div id='map'></div>
+<div id="mask"></div>
+
+<div  class="ui cards">
+  <div id='logo-container' class="card ">
+    <div class="content">
+      
+        <div id="stoggle" class="ui basic green button">toggle</div>
+        <div id="mtoggle" class="ui basic green button">modal</div>
+        <div id="pg" class="ui basic primary button">pg</div>
+
+    </div>
+  </div>
+
+</div>
+
+</div>
+  
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+  <div id="sidebar" class="ui sidebar vertical menu ">
+    <a class="item">
+      1
+    </a>
+    <a class="item">
+      2
+    </a>
+    <a class="item">
+      3
+    </a>
+  </div>
+
+
+ 
+     
+
+  <div id="detail-bar" class="ui fasttrans right right-bar   sidebar labeled icon menu ">
+
+  <div id="detail-bar-1" class="item right1 inverted">
+   <div id="uicards" class="ui cards ">
+    <div class="ui  card inverted">
+  <button class="ui primary  icon button">
+  
+  <i class=" external icon"></i>
+  View Original on Pixabay 
+</button>
+  <div class="content">
+    <a class="header">Kristy</a>
+    <div class="meta">
+      <span class="date">Joined in 2013</span>
+    </div>
+    <div class="description">
+      Kristy is an art director living in New York.
+    </div>
+  </div>
+  <div class="extra content">
+    <a>
+      <i class="user icon"></i>
+      22 Friends
+    </a>
+  </div>
+</div>
+   <div class="ui segment inverted ">
+  <button id="closebottom" class="ui primary fluid button">
+  close ^
+</button>
+  <div class="content">
+    <a class=" header">Kristy</a>
+    <div class="meta">
+      <span class="date">Joined in 2013</span>
+    </div>
+    <div class="description">
+      Kristy is an art director living in New York.
+    </div>
+  </div>
+  <div class="extra content">
+    <a>
+      <i class="user icon"></i>
+      22 Friends
+    </a>
+  </div>
+</div>
+  </div>
+
+
+
+
+<div class="ui items ">
+  <div class="item inverted">
+
+    <div class="content">
+      <a class="header">Stevie Feliciano</a>
+      <div class="description">
+        <p>Stevie Feliciano is a <a>library scientist</a> living in New York City. She likes to spend her time reading, running, and writing.</p>
+      </div>
+    </div>
+  </div>
+  <div class="item inverted">
+   
+    <div class="content">
+      <a class="header">Veronika Ossi</a>
+      <div class="description">
+        <p>Veronika Ossi is a set designer living in New York who <a>enjoys</a> kittens, music, and partying.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+ </div>
+  
+
+
+
+
+
+</div>
+  
+<script>
+var photoInfoOpened = true;
+$(window).on('load resize', function() {
+        var wWidth = $(this).width();
+        var wHeight = $(this).height();
+        console.log(wWidth/wHeight);
+
+        if(wWidth/wHeight >1.15){
+            $( "#detail-bar" ).removeClass( "bottom bottom-bar" ).addClass( "right-bar right vertical inline" );
+            $( "#detail-bar-1" ).removeClass( "bottom1" ).addClass( "right1" );
+            $( "#detail-bar-2" ).removeClass( "bottom2" ).addClass( "right2" );
+            $( "#uicards" ).removeClass( "two" );
+          if (photoInfoOpened === true){
+          $( ".pswp" ).removeClass( "pswp-closed pswp-horizontal-opened" ).addClass( "pswp-vertical-opened" );
+        } else{
+          $( ".pswp" ).removeClass( "pswp-horizontal-opened pswp-vertical-opened" ).addClass( "pswp-closed" );
+        }
+            //$(".pswp").css({'height':'100%',"width":"80%"});
+               
+        } else {
+            $( "#detail-bar" ).removeClass( "right right-bar vertical inline" ).addClass( "bottom-bar bottom" );
+            $( "#detail-bar-1" ).removeClass( "right1" ).addClass( "bottom1" );
+            $( "#detail-bar-2" ).removeClass( "right2" ).addClass( "bottom2" );
+            $( "#uicards" ).addClass( "two" );
+          //  $(".pswp").css({'height':'80%',"width":"100%"});
+          if (photoInfoOpened === true){
+          $( ".pswp" ).removeClass( "pswp-closed pswp-vertical-opened" ).addClass( "pswp-horizontal-opened" );
+        } else{
+          $( ".pswp" ).removeClass( "pswp-horizontal-opened pswp-vertical-opened" ).addClass( "pswp-closed" );
+        }
+
+        }
+      
+       
+    });
+mapboxgl.accessToken = 'pk.eyJ1IjoianN0cmF0bWFuIiwiYSI6IlpVUTZSXzgifQ.hxmNOg44oouXakZyJQZX7Q';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/streets-v9', //stylesheet location
+    center: [-74.50, 40], // starting position
+    zoom: 9 // starting zoom
+});
+
+
+$( document ).ready(function() {
+
+$('#stoggle').click(function() {
+    
+ $('.ui.sidebar')
+ //.sidebar('dimPage', 'false')
+ .sidebar({
+ dimPage: false,
+ transition: 'overlay',
+ closable: false
+ })
+ .sidebar('toggle');
+});
+
+$('.pswp__top-bar2').click(function() {
+gallery.updateSize();
+ $('.ui.labeled.icon.sidebar')
+  .sidebar('show')
+;
+photoInfoOpened = true;
+$('.pswp').animate({width:'80%'},{duration: 250,
+        step: function() {
+          gallery.updateSize();
+        }
+});
+});
+
+$('#bottom').click(function() {
+ $('.ui.labeled.icon.sidebar')
+ .sidebar({
+ dimPage: false
+ })
+  .sidebar('toggle')
+;
+});
+$('#closebottom').click(function() {
+   
+            $( "#detail-bar" ).removeClass( "fasttrans" ).addClass( "slowtrans" );
+
+ $('.ui.labeled.icon.sidebar')
+  .sidebar('hide')
+;
+
+photoInfoOpened = false;
+$('.pswp').animate({width:'100%'},{duration: 100,
+        step: function() {
+          gallery.updateSize();
+        }
+});
+//$('.pswp__caption ').animate({height:'500px'},{duration: 500,
+//        step: function() {
+  //        gallery.updateSize();
+ //       }
+//});
+//gallery.options.barsSize= {top:44, bottom:11};
+
+$( "#detail-bar" ).removeClass( "bottom" ).removeClass("bottom-bar").addClass( "right-bar" ).addClass( "right" );
+
+
+});
+var gallery;// = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+
+$('#pg').click(function() {
+
+// Initializes and opens PhotoSwipe
+gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+gallery.init();
+
+ $('.ui.labeled.icon.sidebar')
+  .sidebar({
+ dimPage: false,
+ transition: 'overlay',
+ //useLegacy: true,
+ //duration:1000,
+ closable: false
+ })
+  //$('#bottom-bar').show();
+  .sidebar('show')
+;
+gallery.listen('close', function() {
+  $("#mask").css({'visibility':'hidden'});
+    $( "#detail-bar" ).removeClass( "slowtrans" ).addClass( "fasttrans" );
+    console.log('closed');
+ $('.ui.labeled.icon.sidebar')
+  .sidebar('hide')
+;
+ });
+$("#mask").css({'visibility':'visible'});
+});
+
+
+$('#mtoggle').click(function() {
+
+$('.fullscreen.modal')
+  .modal('show')
+;
+});
+
+
+
+
+var pswpElement = document.querySelectorAll('.pswp')[0];
+
+// build items array
+var items = [
+
+    {
+        src: 'https://unsplash.it/1920/1280/?random',
+        w: 1920,
+        h: 1280
+    },
+    {
+        src: 'https://unsplash.it/1920/1065/?random',
+        w: 1920,
+        h: 1065
+    },
+    {
+        src: 'https://unsplash.it/1920/1200/?random',
+        w: 1920,
+        h: 1200
+    },
+    {
+        src: 'https://unsplash.it/2169/1486/?random',
+        w: 2169,
+        h: 1486
+    },
+    {
+        src: 'https://unsplash.it/1920/1280/?random',
+        w: 1920,
+        h: 1280
+    }
+];
+
+// define options (if needed)
+var options = {
+    // optionName: 'option value'
+    // for example:
+    //barsSize: {top:44, bottom:auto},
+    //captionEl: true,
+    index: 0 // start at first slide
+};
+
+
+
+
+
+ });
+
+
+
+
+</script>
+
+</body>
+</html>
