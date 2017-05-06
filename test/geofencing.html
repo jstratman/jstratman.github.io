@@ -19,7 +19,7 @@
     background: rgba(0,0,0,0.5);
     color: #fff;
     position: absolute;
-    top: 100px;
+    top: 10px;
     left: 0;
     right:0;
     text-align: center;
@@ -119,7 +119,7 @@ for (i = 0; i < response.features.length; i++) {
     features.push(response.features[i]);
 }
 if (zones.length >0) {
-coordinates.innerHTML = "<h2>Point falls within these zones:</h2><h3>"+zones+"</h3><br><br>"+ JSON.stringify(features);
+coordinates.innerHTML = '<h2>Point falls within these zones:</h2><h3>'+zones+'</h3><h2>Query: </h2><a target="blank" href="https://api.mapbox.com/v4/jstratman.cj2chm5sx02pc2wo8q7ii78jr-6pgxx/tilequery/' + query + '.json?radius=0&access_token=pk.eyJ1IjoianN0cmF0bWFuIiwiYSI6IlpVUTZSXzgifQ.hxmNOg44oouXakZyJQZX7Q">https://api.mapbox.com/v4/jstratman.cj2chm5sx02pc2wo8q7ii78jr-6pgxx/tilequery/' + query + '.json?radius=0&access_token=pk.eyJ1IjoianN0cmF0bWFuIiwiYSI6IlpVUTZSXzgifQ.hxmNOg44oouXakZyJQZX7Q</a><h2>Response: </h2>'+  JSON.stringify(features);
 } else{
     coordinates.innerHTML = '<i>outside geofence</i>';
 }
