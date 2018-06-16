@@ -965,7 +965,7 @@
     "x": 0,
     "y": 1024
   },
-  "wetland-med2": {
+  "wetland-med3": {
     "height": 85,
     "pixelRatio": 2,
     "width": 84,
@@ -979,7 +979,7 @@
     "x": 132,
     "y": 1024
   },
-  "wetland2": {
+  "wetland3": {
     "height": 132,
     "pixelRatio": 2,
     "width": 132,
