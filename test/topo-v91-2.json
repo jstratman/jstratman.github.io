@@ -3810,9 +3810,7 @@
           "Brandon Text Bold",
           "Arial Unicode MS Regular"
         ],
-        "text-
-        
-        ": "uppercase"
+        "text-transform": "uppercase"
       },
       "paint": {
         "text-halo-color": {
@@ -3990,9 +3988,9 @@
           ]
         ],
         "text-font": [
-                "Brandon Text Light",
-                "Arial Unicode MS Regular"
-              ],
+          "Brandon Text Light",
+          "Arial Unicode MS Regular"
+        ],
         "text-size": [
           "interpolate",
           [
