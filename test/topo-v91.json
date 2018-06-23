@@ -3810,7 +3810,9 @@
           "Brandon Text Bold",
           "Arial Unicode MS Regular"
         ],
-        "text-transform": "uppercase"
+        "text-
+        
+        ": "uppercase"
       },
       "paint": {
         "text-halo-color": {
@@ -3988,107 +3990,9 @@
           ]
         ],
         "text-font": [
-          "case",
-          [
-            "has",
-            "group"
-          ],
-          [
-            "match",
-            [
-              "get",
-              "group"
-            ],
-            [
-              410
-            ],
-            [
-              "literal",
-              [
                 "Brandon Text Light",
                 "Arial Unicode MS Regular"
-              ]
-            ],
-            [
-              105,
-              121
-            ],
-            [
-              "literal",
-              [
-                "Brandon Text Bold",
-                "Arial Unicode MS Regular"
-              ]
-            ],
-            [
-              120,
-              201,
-              202,
-              203,
-              250
-            ],
-            [
-              "literal",
-              [
-                "Brandon Text Medium",
-                "Arial Unicode MS Regular"
-              ]
-            ],
-            [
-              "literal",
-              [
-                "Brandon Font Regular",
-                "Arial Unicode MS Regular"
-              ]
-            ]
-          ],
-          [
-            "match",
-            [
-              "get",
-              "class_id"
-            ],
-            [
-              100146,
-              8845
-            ],
-            [
-              "literal",
-              [
-                "Brandon Font Bold",
-                "Arial Unicode MS Regular"
-              ]
-            ],
-            [
-              5167,
-              9362
-            ],
-            [
-              "literal",
-              [
-                "Brandon Font Medium",
-                "Arial Unicode MS Regular"
-              ]
-            ],
-            [
-              9677
-            ],
-            [
-              "literal",
-              [
-                "Brandon Text Regular Italic",
-                "Arial Unicode MS Regular"
-              ]
-            ],
-            [
-              "literal",
-              [
-                "Brandon Font Regular",
-                "Arial Unicode MS Regular"
-              ]
-            ]
-          ]
-        ],
+              ],
         "text-size": [
           "interpolate",
           [
