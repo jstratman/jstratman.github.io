@@ -1,0 +1,35 @@
+{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "label": "Moraine Park",
+        "label_scale": 50.63751314916929,
+        "class_id": 266
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            -105.614465,
+            40.350891
+          ],
+          [
+            -105.607316,
+            40.352257
+          ],
+          [
+            -105.597557,
+            40.352893
+          ],
+          [
+            -105.585963,
+            40.352512
+          ]
+        ],
+        "type": "LineString"
+      },
+      "id": "25d801935e9517b161105b8e21976c07"
+    }
+  ],
+  "type": "FeatureCollection"
+}
