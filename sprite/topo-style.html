@@ -18,10 +18,14 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoianN0cmF0bSIsImEiOiJPT1hJQmNnIn0.G6gvgXGeQXbQ5cnIj8i7AA';
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'https://raw.githubusercontent.com/jstratman/jstratman.github.io/master/na-map-style-1.json', //hosted style id
-    center: [-108.51517,37.20106], // starting position
-    zoom: 13 // starting zoom
+    style: 'https://raw.githubusercontent.com/jstratman/jstratman.github.io/master/test/topo-v95-2.json', //hosted style id
+    center: [-106.48216,38.52398], // starting position
+    zoom: 13, // starting zoom
+    hash: true
+    //showTileBoundaries: true
 });
+map.showTileBoundaries = true;
+map.showCollisionBoxes = true;
 </script>
 
 </body>
