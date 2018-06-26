@@ -3831,7 +3831,7 @@
       "source": "na-topo",
       "source-layer": "line-labels",
       "layout": {
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": [
@@ -3935,7 +3935,7 @@
             "get",
             "text_size"
           ],
-          8
+          12
         ],
         "text-allow-overlap": false,
         "text-ignore-placement": false,
@@ -3968,7 +3968,7 @@
         "text-padding": 0,
         "text-field": "{label}",
         "text-max-width": 1000,
-        "visibility": "none",
+        "visibility": "visible",
         "symbol-avoid-edges": true,
         "text-letter-spacing": [
           "case",
