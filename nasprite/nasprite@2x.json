@@ -24,14 +24,14 @@
     "height": 14,
     "pixelRatio": 2,
     "width": 14,
-    "x": 135,
+    "x": 155,
     "y": 1195
   },
   "attraction-dot": {
     "height": 8,
     "pixelRatio": 2,
     "width": 8,
-    "x": 230,
+    "x": 250,
     "y": 1195
   },
   "az-trail": {
@@ -122,7 +122,7 @@
     "height": 16,
     "pixelRatio": 2,
     "width": 16,
-    "x": 11,
+    "x": 31,
     "y": 1195
   },
   "boating-restriction": {
@@ -143,14 +143,14 @@
     "height": 12,
     "pixelRatio": 2,
     "width": 12,
-    "x": 163,
+    "x": 183,
     "y": 1195
   },
   "building-sq-outline": {
     "height": 14,
     "pixelRatio": 2,
     "width": 14,
-    "x": 149,
+    "x": 169,
     "y": 1195
   },
   "ca": {
@@ -234,14 +234,14 @@
     "height": 2,
     "pixelRatio": 2,
     "width": 2,
-    "x": 288,
+    "x": 308,
     "y": 1195
   },
   "circle-6px-solid": {
     "height": 2,
     "pixelRatio": 2,
     "width": 2,
-    "x": 290,
+    "x": 310,
     "y": 1195
   },
   "cliff-dwelling": {
@@ -360,21 +360,21 @@
     "height": 8,
     "pixelRatio": 2,
     "width": 8,
-    "x": 238,
+    "x": 258,
     "y": 1195
   },
   "dot-inverted": {
     "height": 8,
     "pixelRatio": 2,
     "width": 8,
-    "x": 246,
+    "x": 266,
     "y": 1195
   },
   "dots-wilderness": {
     "height": 8,
     "pixelRatio": 2,
     "width": 8,
-    "x": 254,
+    "x": 274,
     "y": 1195
   },
   "entry-point": {
@@ -423,7 +423,7 @@
     "height": 16,
     "pixelRatio": 2,
     "width": 16,
-    "x": 27,
+    "x": 47,
     "y": 1195
   },
   "g1": {
@@ -493,7 +493,7 @@
     "height": 8,
     "pixelRatio": 2,
     "width": 8,
-    "x": 262,
+    "x": 282,
     "y": 1195
   },
   "homestead": {
@@ -535,7 +535,7 @@
     "height": 8,
     "pixelRatio": 2,
     "width": 10,
-    "x": 270,
+    "x": 290,
     "y": 1195
   },
   "leanto": {
@@ -570,21 +570,21 @@
     "height": 16,
     "pixelRatio": 2,
     "width": 16,
-    "x": 43,
+    "x": 63,
     "y": 1195
   },
   "mine-shaft.1": {
     "height": 16,
     "pixelRatio": 2,
     "width": 16,
-    "x": 59,
+    "x": 79,
     "y": 1195
   },
   "mine-shaft.2": {
     "height": 16,
     "pixelRatio": 2,
     "width": 16,
-    "x": 75,
+    "x": 95,
     "y": 1195
   },
   "mine.1": {
@@ -633,7 +633,7 @@
     "height": 15,
     "pixelRatio": 2,
     "width": 20,
-    "x": 115,
+    "x": 135,
     "y": 1195
   },
   "national-forest": {
@@ -731,21 +731,21 @@
     "height": 2,
     "pixelRatio": 2,
     "width": 2,
-    "x": 292,
+    "x": 312,
     "y": 1195
   },
   "pop-4": {
     "height": 2,
     "pixelRatio": 2,
     "width": 2,
-    "x": 294,
+    "x": 314,
     "y": 1195
   },
   "pop-5": {
     "height": 2,
     "pixelRatio": 2,
     "width": 2,
-    "x": 296,
+    "x": 316,
     "y": 1195
   },
   "reef": {
@@ -794,7 +794,7 @@
     "height": 12,
     "pixelRatio": 2,
     "width": 12,
-    "x": 175,
+    "x": 195,
     "y": 1195
   },
   "slot-canyon": {
@@ -815,7 +815,7 @@
     "height": 10,
     "pixelRatio": 2,
     "width": 10,
-    "x": 199,
+    "x": 219,
     "y": 1195
   },
   "spring": {
@@ -846,6 +846,13 @@
     "x": 1675,
     "y": 1152
   },
+  "stripe": {
+    "height": 20,
+    "pixelRatio": 2,
+    "width": 20,
+    "x": 0,
+    "y": 1195
+  },
   "surf": {
     "height": 38,
     "pixelRatio": 2,
@@ -871,7 +878,7 @@
     "height": 16,
     "pixelRatio": 2,
     "width": 24,
-    "x": 91,
+    "x": 111,
     "y": 1195
   },
   "tree": {
@@ -899,7 +906,7 @@
     "height": 19,
     "pixelRatio": 2,
     "width": 11,
-    "x": 0,
+    "x": 20,
     "y": 1195
   },
   "us-highway-3I": {
@@ -990,21 +997,21 @@
     "height": 2,
     "pixelRatio": 2,
     "width": 20,
-    "x": 298,
+    "x": 318,
     "y": 1195
   },
   "waterfall-new": {
     "height": 9,
     "pixelRatio": 2,
     "width": 21,
-    "x": 209,
+    "x": 229,
     "y": 1195
   },
   "well": {
     "height": 12,
     "pixelRatio": 2,
     "width": 12,
-    "x": 187,
+    "x": 207,
     "y": 1195
   },
   "wetland": {
@@ -1025,7 +1032,7 @@
     "height": 8,
     "pixelRatio": 2,
     "width": 8,
-    "x": 280,
+    "x": 300,
     "y": 1195
   },
   "wy": {
