@@ -48,13 +48,6 @@
     "x": 419,
     "y": 576
   },
-  "bg": {
-    "height": 19,
-    "pixelRatio": 1,
-    "width": 19,
-    "x": 345,
-    "y": 576
-  },
   "bg-14": {
     "height": 14,
     "pixelRatio": 1,
@@ -94,7 +87,7 @@
     "height": 19,
     "pixelRatio": 1,
     "width": 19,
-    "x": 364,
+    "x": 345,
     "y": 576
   },
   "bg-red-16": {
@@ -116,6 +109,13 @@
     "pixelRatio": 1,
     "width": 16,
     "x": 645,
+    "y": 576
+  },
+  "bg-white": {
+    "height": 19,
+    "pixelRatio": 1,
+    "width": 19,
+    "x": 364,
     "y": 576
   },
   "bia": {
