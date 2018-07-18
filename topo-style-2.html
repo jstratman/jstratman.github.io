@@ -19,11 +19,12 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoianN0cmF0bSIsImEiOiJPT1hJQmNnIn0.G6gvgXGeQXbQ5cnIj8i7AA';
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'https://raw.githubusercontent.com/jstratman/jstratman.github.io/master/topo128-2.json', //hosted style id
-    center: [-108.289127,37.094603], // starting position
+    style: 'https://raw.githubusercontent.com/jstratman/jstratman.github.io/master/topo-test.json', //hosted style id
+    center: [-108.41409,37.3098], // starting position
     zoom: 13, // starting zoom
     hash: true,
-    fadeDuration: 70,
+    fadeDuration: 120,
+    maxZoom: 16.5
 
     //showTileBoundaries: true
 });
@@ -31,28 +32,15 @@ var map = new mapboxgl.Map({
 
 
 
-map.showTileBoundaries = true;
+  //map.showTileBoundaries = true;
 //map.showCollisionBoxes = true;
 map.on('load', function() {
-    map.setLayoutProperty('tree-canopy-orig', 'visibility', 'none');
-    //map.setLayoutProperty('poi-labels-left', 'visibility', 'none');
+    map.setLayoutProperty('tree-canopy-orig', 'visibility', 'visible');
+//    map.setLayoutProperty('trails-labels-12-line-copy', 'visibility', 'visible');
   //  map.setLayoutProperty('poi-labels', 'visibility', 'none');
   //  map.setLayoutProperty('contours-major', 'visibility', 'none');
   //line-labels-copy-copy
-  map.setLayoutProperty('trails-labels-12-line-copy', 'visibility', 'none');
-  map.setLayoutProperty('trails-labels-12-line', 'visibility', 'none');
-  map.setLayoutProperty('line-labels-center', 'symbol-placement', 'line-center');
-  map.setLayoutProperty('trails-labels-z14max-center', 'symbol-placement', 'line-center');
 
-//  map.setLayoutProperty('trails-labels-z14max-center', 'text-max-angle', 35);
-
-  //map.setLayoutProperty('line-labels-center', 'text-ignore-placement', false);
-  //map.setLayoutProperty('line-labels-center', 'text-allow-overlap', false);
-
-  //  map.setLayoutProperty('contours-minor', 'visibility', 'none');
-  //  map.setLayoutProperty('contours-trees-major', 'visibility', 'none');
-  //  map.setLayoutProperty('contours-trees-minor', 'visibility', 'none');
-    //map.setLayoutProperty('poi-cluster', 'visibility', 'none');
 
 
 
