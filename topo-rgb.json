@@ -10596,7 +10596,7 @@
         "icon-ignore-placement": false,
         "icon-rotate": 0,
         "icon-size": 1,
-        "visibility": "none",
+        "visibility": "visible",
         "icon-padding": 0,
         "icon-optional": false,
         "text-field": [
@@ -16649,7 +16649,7 @@
         ]
       ],
       "layout": {
-        "visibility": "none",
+        "visibility": "visible",
         "text-font": [
           "match",
           [
@@ -20831,7 +20831,7 @@
         ]
       ],
       "layout": {
-        "visibility": "none",
+        "visibility": "visible",
         "text-font": [
           "match",
           [
@@ -22623,7 +22623,7 @@
         ]
       ],
       "layout": {
-        "visibility": "none",
+        "visibility": "visible",
         "text-font": [
           "case",
           [
@@ -26896,7 +26896,7 @@
         "all"
       ],
       "layout": {
-        "visibility": "none",
+        "visibility": "visible",
         "text-font": [
           "case",
           [
